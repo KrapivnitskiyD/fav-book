@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+function BookInfo() {
+    const book = {
+        title: 'Приключения Тома Сойера',
+        author: 'Марк Твен',
+        genre: 'Приключения',
+        pages: 394,
+        reviews: [
+            'Роман Марка Твена Приключения Тома Сойера — это захватывающая история о дружбе и смелости, наполненная юмором и увлекательными приключениями, которая до сих пор вдохновляет читателей всех возрастов.',
+            'Живая и насыщенная событиями книга Приключения Тома Сойера захватывает своим остроумием, живописными описаниями и неподдельной атмосферой детской непосредственности и жажды приключений',
+            'Мастерство Марка Твена в Приключениях Тома Сойера проявляется в его способности передать дух приключений, веселое озорство и жизненные уроки, которые делают эту книгу не только увлекательной, но и поучительной.'
+        ]
+    };
+
+    const styleCard = {
+        padding: '20px',
+        border: '2px solid #ffffff',
+        backgroundColor: '#718cf1',
+        borderRadius: '10px',
+        margin: '5px 20px'
+    };
+
+    return (
+        <div style={styleCard}>
+            <h1>{book.title}</h1>
+            <h2>Автор: {book.author}</h2>
+            <p><strong>Жанр:</strong> {book.genre}</p>
+            <p><strong>Количество страниц:</strong> {book.pages}</p>
+            <h3>Рецензии:</h3>
+
+            {/*вот этот кусок с таблицей я честно подсмотрел у нейросети,
+             но это скорее, потому что ещё не сильно разбираюсь в документации JSX*/}
+            <ul>
+                {book.reviews.map((review, index) => (
+                    <li key={index}>{review}</li>
+                ))}
+            </ul>
+        </div>
+    );
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <BookInfo />
+        </div>
+    );
 }
 
 export default App;
